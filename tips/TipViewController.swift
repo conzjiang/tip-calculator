@@ -8,24 +8,30 @@
 
 import UIKit
 
-class TipViewController: UIViewController {
+class TipViewController: UIViewController, UITextFieldDelegate {
   let tipPercentages = [0.18, 0.2, 0.22]
 
   @IBOutlet weak var tipControl: UISegmentedControl!
   @IBOutlet weak var tipLabel: UILabel!
   @IBOutlet weak var billField: UITextField!
   @IBOutlet weak var totalLabel: UILabel!
+  @IBOutlet weak var partyCountField: UITextField!
 
   override func viewDidLoad() {
     super.viewDidLoad()
-    tipLabel.text = "$0.00"
-    totalLabel.text = "$0.00"
+    billField.delegate = self
+    partyCountField.delegate = self
+    billField.becomeFirstResponder()
   }
 
   override func viewWillAppear(animated: Bool) {
     super.viewWillAppear(animated)
-    tipControl.selectedSegmentIndex = DefaultTipUtility.getDefaultTipIndex()
+    tipControl.selectedSegmentIndex = DefaultValuesUtility.getDefaultTipIndex()
     updateTipAndTotal()
+  }
+
+  func textFieldDidBeginEditing(textField: UITextField) {
+    textField.selectAll(nil)
   }
 
   @IBAction func onEditingChanged(sender: AnyObject) {
@@ -37,13 +43,23 @@ class TipViewController: UIViewController {
   }
 
   func updateTipAndTotal() {
-    let tipPercentage = tipPercentages[tipControl.selectedSegmentIndex]
     let billAmount = NSString(string: billField.text!).doubleValue
-    let tip = billAmount * tipPercentage
-    let total = billAmount + tip
+    let tipPercentage = tipPercentages[tipControl.selectedSegmentIndex]
+    let totalTip = billAmount * tipPercentage
+    let totalBill = billAmount + totalTip
 
-    tipLabel.text = String(format: "$%.2f", tip)
-    totalLabel.text = String(format: "$%.2f", total)
+    tipLabel.text = String(format: "$%.2f", amountPerPerson(totalTip))
+    totalLabel.text = String(format: "$%.2f", amountPerPerson(totalBill))
+  }
+
+  func amountPerPerson(amount: Double) -> Double {
+    let partyCount = NSString(string: partyCountField.text!).doubleValue
+
+    guard partyCount > 0 else {
+      return 0
+    }
+
+    return amount / partyCount
   }
 }
 

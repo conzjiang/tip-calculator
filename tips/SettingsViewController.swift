@@ -14,11 +14,11 @@ class SettingsViewController: UIViewController {
 
   override func viewDidLoad() {
     super.viewDidLoad()
-    defaultTipControl.selectedSegmentIndex = DefaultTipUtility.getDefaultTipIndex()
+    defaultTipControl.selectedSegmentIndex = DefaultValuesUtility.getDefaultTipIndex()
   }
 
   @IBAction func onValueChanged(sender: AnyObject) {
     let defaultTipIndex = defaultTipControl.selectedSegmentIndex
-    DefaultTipUtility.saveToLocalStorage(defaultTipIndex)
+    DefaultValuesUtility.saveTipIndex(defaultTipIndex)
   }
 }
