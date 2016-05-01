@@ -15,7 +15,7 @@
             <BuildableReference
                BuildableIdentifier = "primary"
                BlueprintIdentifier = "C01384C61CD13790000944EA"
-               BuildableName = "Tip with Friends.app"
+               BuildableName = "Tipmate.app"
                BlueprintName = "Tipmate"
                ReferencedContainer = "container:Tipmate.xcodeproj">
             </BuildableReference>
@@ -33,7 +33,7 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "C01384C61CD13790000944EA"
-            BuildableName = "Tip with Friends.app"
+            BuildableName = "Tipmate.app"
             BlueprintName = "Tipmate"
             ReferencedContainer = "container:Tipmate.xcodeproj">
          </BuildableReference>
@@ -56,7 +56,7 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "C01384C61CD13790000944EA"
-            BuildableName = "Tip with Friends.app"
+            BuildableName = "Tipmate.app"
             BlueprintName = "Tipmate"
             ReferencedContainer = "container:Tipmate.xcodeproj">
          </BuildableReference>
@@ -75,7 +75,7 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "C01384C61CD13790000944EA"
-            BuildableName = "Tip with Friends.app"
+            BuildableName = "Tipmate.app"
             BlueprintName = "Tipmate"
             ReferencedContainer = "container:Tipmate.xcodeproj">
          </BuildableReference>
