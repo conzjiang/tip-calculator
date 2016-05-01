@@ -19,8 +19,11 @@ class TipViewController: UIViewController, UITextFieldDelegate {
 
   override func viewDidLoad() {
     super.viewDidLoad()
+
     billField.delegate = self
     partyCountField.delegate = self
+
+    setDefaultValues()
     billField.becomeFirstResponder()
   }
 
@@ -28,10 +31,6 @@ class TipViewController: UIViewController, UITextFieldDelegate {
     super.viewWillAppear(animated)
     tipControl.selectedSegmentIndex = DefaultValuesUtility.getDefaultTipIndex()
     updateTipAndTotal()
-  }
-
-  func textFieldDidBeginEditing(textField: UITextField) {
-    textField.selectAll(nil)
   }
 
   @IBAction func onEditingChanged(sender: AnyObject) {
@@ -42,17 +41,38 @@ class TipViewController: UIViewController, UITextFieldDelegate {
     view.endEditing(true)
   }
 
-  func updateTipAndTotal() {
-    let billAmount = NSString(string: billField.text!).doubleValue
+  func textFieldDidBeginEditing(textField: UITextField) {
+    textField.selectAll(nil)
+  }
+
+  func textFieldDidEndEditing(textField: UITextField) {
+    guard textField == billField else {
+      return
+    }
+
+    // normalize bill amount to $xx.xx format with two decimal places
+    // ex) 10 -> 10.00
+    textField.text = convertDoubleToString(billFieldDoubleValue(), addDollarSign: false)
+  }
+
+  private func setDefaultValues() {
+    let defaultBillAmount = DefaultValuesUtility.getDefaultBillAmount()
+    let defaultPartyCount = DefaultValuesUtility.getDefaultPartyCount()
+    billField.text = convertDoubleToString(defaultBillAmount, addDollarSign: false)
+    partyCountField.text = String(defaultPartyCount)
+  }
+
+  private func updateTipAndTotal() {
+    let billAmount = billFieldDoubleValue()
     let tipPercentage = tipPercentages[tipControl.selectedSegmentIndex]
     let totalTip = billAmount * tipPercentage
     let totalBill = billAmount + totalTip
 
-    tipLabel.text = String(format: "$%.2f", amountPerPerson(totalTip))
-    totalLabel.text = String(format: "$%.2f", amountPerPerson(totalBill))
+    tipLabel.text = convertDoubleToString(amountPerPerson(totalTip), addDollarSign: true)
+    totalLabel.text = convertDoubleToString(amountPerPerson(totalBill), addDollarSign: true)
   }
 
-  func amountPerPerson(amount: Double) -> Double {
+  private func amountPerPerson(amount: Double) -> Double {
     let partyCount = NSString(string: partyCountField.text!).doubleValue
 
     guard partyCount > 0 else {
@@ -60,6 +80,20 @@ class TipViewController: UIViewController, UITextFieldDelegate {
     }
 
     return amount / partyCount
+  }
+
+  private func convertDoubleToString(amount: Double, addDollarSign: Bool) -> String {
+    var formatString = "%.2f"
+
+    if addDollarSign {
+      formatString = "$%.2f"
+    }
+
+    return String(format: formatString, amount)
+  }
+
+  private func billFieldDoubleValue() -> Double {
+    return NSString(string: billField.text!).doubleValue
   }
 }
 

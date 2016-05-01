@@ -12,17 +12,31 @@ class DefaultValuesUtility {
   static let TIP_INDEX_KEY = "default_tip_index"
   static let BILL_AMOUNT_KEY = "default_bill_amount"
   static let PARTY_COUNT_KEY = "default_party_count"
+  static let DEFAULT_BILL_AMOUNT = 10.0
+  static let DEFAULT_PARTY_COUNT = 1
 
   static func getDefaultTipIndex() -> Int {
     return getSavedIntegerForKey(TIP_INDEX_KEY)
   }
 
   static func getDefaultBillAmount() -> Double {
-    return getSavedDoubleForKey(BILL_AMOUNT_KEY)
+    let billAmount = getSavedDoubleForKey(BILL_AMOUNT_KEY)
+
+    if billAmount == 0 {
+      return DEFAULT_BILL_AMOUNT
+    }
+
+    return billAmount
   }
 
   static func getDefaultPartyCount() -> Int {
-    return getSavedIntegerForKey(PARTY_COUNT_KEY)
+    let partyCount = getSavedIntegerForKey(PARTY_COUNT_KEY)
+
+    if partyCount == 0 {
+      return DEFAULT_PARTY_COUNT
+    }
+
+    return partyCount
   }
 
   static func saveTipIndex(index: Int) {
