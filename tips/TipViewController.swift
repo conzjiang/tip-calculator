@@ -10,21 +10,28 @@ import UIKit
 
 class TipViewController: UIViewController, UITextFieldDelegate {
   let tipPercentages = [0.18, 0.2, 0.22]
+  var totalTextLabelInitialFrame: CGRect!
+  var totalAmountLabelInitialFrame: CGRect!
 
   @IBOutlet weak var tipControl: UISegmentedControl!
   @IBOutlet weak var tipLabel: UILabel!
   @IBOutlet weak var billField: UITextField!
-  @IBOutlet weak var totalLabel: UILabel!
+  @IBOutlet weak var totalTextLabel: UILabel!
+  @IBOutlet weak var totalAmountLabel: UILabel!
   @IBOutlet weak var partyCountField: UITextField!
+  @IBOutlet weak var tipTextLabel: UILabel!
+  @IBOutlet weak var tipAmountLabel: UILabel!
 
   override func viewDidLoad() {
     super.viewDidLoad()
+
+    totalTextLabelInitialFrame = totalTextLabel.frame
+    totalAmountLabelInitialFrame = totalAmountLabel.frame
 
     billField.delegate = self
     partyCountField.delegate = self
 
     setDefaultValues()
-    billField.becomeFirstResponder()
   }
 
   override func viewWillAppear(animated: Bool) {
@@ -32,6 +39,9 @@ class TipViewController: UIViewController, UITextFieldDelegate {
 
     tipControl.selectedSegmentIndex = DefaultValuesUtility.getDefaultTipIndex()
     updateTipAndTotal()
+    // don't animate total bill amount when appearing
+    setTotalBillPosOnBeginEditing()
+    billField.becomeFirstResponder()
   }
 
   override func viewWillDisappear(animated: Bool) {
@@ -47,10 +57,18 @@ class TipViewController: UIViewController, UITextFieldDelegate {
 
   @IBAction func onTap(sender: AnyObject) {
     view.endEditing(true)
+
+    UIView.animateWithDuration(0.4, animations: {
+      self.setTotalBillPosOnEndEditing()
+    })
   }
 
   func textFieldDidBeginEditing(textField: UITextField) {
     textField.selectAll(nil)
+
+    UIView.animateWithDuration(0.4, animations: {
+      self.setTotalBillPosOnBeginEditing()
+    })
   }
 
   func textFieldDidEndEditing(textField: UITextField) {
@@ -77,7 +95,7 @@ class TipViewController: UIViewController, UITextFieldDelegate {
     let totalBill = billAmount + totalTip
 
     tipLabel.text = convertDoubleToString(amountPerPerson(totalTip), addDollarSign: true)
-    totalLabel.text = convertDoubleToString(amountPerPerson(totalBill), addDollarSign: true)
+    totalAmountLabel.text = convertDoubleToString(amountPerPerson(totalBill), addDollarSign: true)
   }
 
   private func amountPerPerson(amount: Double) -> Double {
@@ -102,5 +120,20 @@ class TipViewController: UIViewController, UITextFieldDelegate {
 
   private func billFieldDoubleValue() -> Double {
     return NSString(string: billField.text!).doubleValue
+  }
+
+  private func setTotalBillPosOnBeginEditing() {
+    setTotalBillYPos(totalTextY: tipTextLabel.frame.origin.y,
+                     totalAmountY: tipAmountLabel.frame.origin.y)
+  }
+
+  private func setTotalBillPosOnEndEditing() {
+    setTotalBillYPos(totalTextY: totalTextLabelInitialFrame.origin.y,
+                     totalAmountY: totalAmountLabelInitialFrame.origin.y)
+  }
+
+  private func setTotalBillYPos(totalTextY totalTextY: CGFloat, totalAmountY: CGFloat) {
+    totalTextLabel.frame.origin.y = totalTextY
+    totalAmountLabel.frame.origin.y = totalAmountY
   }
 }

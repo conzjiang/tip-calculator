@@ -80,6 +80,7 @@
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="$11.80" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="Kvp-wL-jsA">
                                 <rect key="frame" x="101" y="335" width="118" height="50"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <color key="backgroundColor" red="0.86373652239999998" green="1" blue="0.85398723170000002" alpha="1" colorSpace="calibratedRGB"/>
                                 <fontDescription key="fontDescription" name="Avenir-Heavy" family="Avenir" pointSize="36"/>
                                 <color key="textColor" red="0.20000000300000001" green="0.20000000300000001" blue="0.20000000300000001" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
@@ -87,6 +88,7 @@
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Total per person" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="foM-Lg-HXb">
                                 <rect key="frame" x="98" y="311" width="124" height="24"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <color key="backgroundColor" red="0.86373652239999998" green="1" blue="0.85398723170000002" alpha="1" colorSpace="calibratedRGB"/>
                                 <fontDescription key="fontDescription" name="Avenir-Book" family="Avenir" pointSize="17"/>
                                 <color key="textColor" red="0.20000000300000001" green="0.20000000300000001" blue="0.20000000300000001" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
@@ -120,9 +122,12 @@
                     <connections>
                         <outlet property="billField" destination="rmy-Kp-6Tu" id="oco-lG-GB1"/>
                         <outlet property="partyCountField" destination="xFx-yO-X4i" id="7Ui-cP-Dcn"/>
+                        <outlet property="tipAmountLabel" destination="KHX-ZN-kva" id="sVa-QJ-BK8"/>
                         <outlet property="tipControl" destination="uys-O3-Y43" id="KyX-d9-Bbj"/>
                         <outlet property="tipLabel" destination="KHX-ZN-kva" id="hpi-wN-0kt"/>
-                        <outlet property="totalLabel" destination="Kvp-wL-jsA" id="TWy-jB-lRa"/>
+                        <outlet property="tipTextLabel" destination="pcL-2a-ezJ" id="7aF-H0-Hdf"/>
+                        <outlet property="totalAmountLabel" destination="Kvp-wL-jsA" id="SfN-rI-2hX"/>
+                        <outlet property="totalTextLabel" destination="foM-Lg-HXb" id="yUj-oV-Mar"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
