@@ -29,12 +29,14 @@ class TipViewController: UIViewController, UITextFieldDelegate {
 
   override func viewWillAppear(animated: Bool) {
     super.viewWillAppear(animated)
+
     tipControl.selectedSegmentIndex = DefaultValuesUtility.getDefaultTipIndex()
     updateTipAndTotal()
   }
 
   override func viewWillDisappear(animated: Bool) {
     super.viewWillDisappear(animated)
+
     DefaultValuesUtility.saveBillAmount(billFieldDoubleValue())
     DefaultValuesUtility.savePartyCount(Int(partyCountField.text!)!)
   }
@@ -102,4 +104,3 @@ class TipViewController: UIViewController, UITextFieldDelegate {
     return NSString(string: billField.text!).doubleValue
   }
 }
-
