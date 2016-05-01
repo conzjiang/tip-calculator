@@ -32,6 +32,7 @@ class TipViewController: UIViewController, UITextFieldDelegate {
     partyCountField.delegate = self
 
     setupAppNotifications()
+    setUpView()
   }
 
   override func viewWillAppear(animated: Bool) {
@@ -72,11 +73,7 @@ class TipViewController: UIViewController, UITextFieldDelegate {
   }
 
   func appWillEnterForeground() {
-    setDefaultValues()
-    updateTipAndTotal()
-    // don't animate total bill amount when opening app
-    setTotalBillPosOnBeginEditing()
-    billField.becomeFirstResponder()
+    setUpView()
   }
 
   func appDidEnterBackground() {
@@ -93,6 +90,14 @@ class TipViewController: UIViewController, UITextFieldDelegate {
                                    selector: #selector(TipViewController.appDidEnterBackground),
                                    name: UIApplicationDidEnterBackgroundNotification,
                                    object: nil)
+  }
+
+  private func setUpView() {
+    setDefaultValues()
+    updateTipAndTotal()
+    // don't animate total bill amount when opening app
+    setTotalBillPosOnBeginEditing()
+    billField.becomeFirstResponder()
   }
 
   private func setDefaultValues() {
