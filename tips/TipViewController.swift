@@ -31,7 +31,7 @@ class TipViewController: UIViewController, UITextFieldDelegate {
     billField.delegate = self
     partyCountField.delegate = self
 
-    setDefaultValues()
+    setupAppNotifications()
   }
 
   override func viewWillAppear(animated: Bool) {
@@ -39,16 +39,6 @@ class TipViewController: UIViewController, UITextFieldDelegate {
 
     tipControl.selectedSegmentIndex = DefaultValuesUtility.getDefaultTipIndex()
     updateTipAndTotal()
-    // don't animate total bill amount when appearing
-    setTotalBillPosOnBeginEditing()
-    billField.becomeFirstResponder()
-  }
-
-  override func viewWillDisappear(animated: Bool) {
-    super.viewWillDisappear(animated)
-
-    DefaultValuesUtility.saveBillAmount(billFieldDoubleValue())
-    DefaultValuesUtility.savePartyCount(Int(partyCountField.text!)!)
   }
 
   @IBAction func onEditingChanged(sender: AnyObject) {
@@ -81,11 +71,41 @@ class TipViewController: UIViewController, UITextFieldDelegate {
     textField.text = convertDoubleToString(billFieldDoubleValue(), addDollarSign: false)
   }
 
+  func appWillEnterForeground() {
+    setDefaultValues()
+    updateTipAndTotal()
+    // don't animate total bill amount when opening app
+    setTotalBillPosOnBeginEditing()
+    billField.becomeFirstResponder()
+  }
+
+  func appDidEnterBackground() {
+    saveDefaultValues()
+  }
+
+  private func setupAppNotifications() {
+    let notificationCenter = NSNotificationCenter.defaultCenter()
+    notificationCenter.addObserver(self,
+                                   selector: #selector(TipViewController.appWillEnterForeground),
+                                   name: UIApplicationWillEnterForegroundNotification,
+                                   object: nil)
+    notificationCenter.addObserver(self,
+                                   selector: #selector(TipViewController.appDidEnterBackground),
+                                   name: UIApplicationDidEnterBackgroundNotification,
+                                   object: nil)
+  }
+
   private func setDefaultValues() {
     let defaultBillAmount = DefaultValuesUtility.getDefaultBillAmount()
     let defaultPartyCount = DefaultValuesUtility.getDefaultPartyCount()
     billField.text = convertDoubleToString(defaultBillAmount, addDollarSign: false)
     partyCountField.text = String(defaultPartyCount)
+  }
+
+  private func saveDefaultValues() {
+    DefaultValuesUtility.saveBillAmount(billFieldDoubleValue())
+    DefaultValuesUtility.savePartyCount(Int(partyCountField.text!)!)
+    DefaultValuesUtility.saveLastOpenedDate()
   }
 
   private func updateTipAndTotal() {
