@@ -33,6 +33,12 @@ class TipViewController: UIViewController, UITextFieldDelegate {
     updateTipAndTotal()
   }
 
+  override func viewWillDisappear(animated: Bool) {
+    super.viewWillDisappear(animated)
+    DefaultValuesUtility.saveBillAmount(billFieldDoubleValue())
+    DefaultValuesUtility.savePartyCount(Int(partyCountField.text!)!)
+  }
+
   @IBAction func onEditingChanged(sender: AnyObject) {
     updateTipAndTotal()
   }
