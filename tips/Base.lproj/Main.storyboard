@@ -1,11 +1,10 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="10116" systemVersion="15E65" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" initialViewController="rJh-x8-uVv">
     <dependencies>
-        <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="10085"/>
     </dependencies>
     <scenes>
-        <!--Tip Calculator-->
+        <!--Tipmate-->
         <scene sceneID="tne-QT-ifu">
             <objects>
                 <viewController id="BYZ-38-t0r" customClass="TipViewController" customModule="tips" customModuleProvider="target" sceneMemberID="viewController">
@@ -111,7 +110,7 @@
                             <outletCollection property="gestureRecognizers" destination="RLp-I2-zK5" appends="YES" id="yEx-Gm-gFa"/>
                         </connections>
                     </view>
-                    <navigationItem key="navigationItem" title="Tip Calculator" id="BlJ-aX-Elj">
+                    <navigationItem key="navigationItem" title="Tipmate" id="BlJ-aX-Elj">
                         <barButtonItem key="rightBarButtonItem" title="Settings" id="G6C-zr-6Qs">
                             <color key="tintColor" red="0.0" green="0.50196081400000003" blue="0.25098040700000002" alpha="1" colorSpace="calibratedRGB"/>
                             <connections>

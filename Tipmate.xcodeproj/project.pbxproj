@@ -19,7 +19,7 @@
 /* Begin PBXFileReference section */
 		C006AF141CD16C8C00CFF3A3 /* SettingsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SettingsViewController.swift; sourceTree = "<group>"; };
 		C006AF161CD178EC00CFF3A3 /* DefaultValuesUtility.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DefaultValuesUtility.swift; sourceTree = "<group>"; };
-		C01384C71CD13790000944EA /* tips.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = tips.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		C01384C71CD13790000944EA /* Tipmate.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Tipmate.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		C01384CA1CD13790000944EA /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		C01384CC1CD13790000944EA /* TipViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TipViewController.swift; sourceTree = "<group>"; };
 		C01384CF1CD13790000944EA /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -50,7 +50,7 @@
 		C01384C81CD13790000944EA /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				C01384C71CD13790000944EA /* tips.app */,
+				C01384C71CD13790000944EA /* Tipmate.app */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -73,9 +73,9 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
-		C01384C61CD13790000944EA /* tips */ = {
+		C01384C61CD13790000944EA /* Tipmate */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = C01384D91CD13790000944EA /* Build configuration list for PBXNativeTarget "tips" */;
+			buildConfigurationList = C01384D91CD13790000944EA /* Build configuration list for PBXNativeTarget "Tipmate" */;
 			buildPhases = (
 				C01384C31CD13790000944EA /* Sources */,
 				C01384C41CD13790000944EA /* Frameworks */,
@@ -85,9 +85,9 @@
 			);
 			dependencies = (
 			);
-			name = tips;
+			name = Tipmate;
 			productName = tips;
-			productReference = C01384C71CD13790000944EA /* tips.app */;
+			productReference = C01384C71CD13790000944EA /* Tipmate.app */;
 			productType = "com.apple.product-type.application";
 		};
 /* End PBXNativeTarget section */
@@ -105,7 +105,7 @@
 					};
 				};
 			};
-			buildConfigurationList = C01384C21CD13790000944EA /* Build configuration list for PBXProject "tips" */;
+			buildConfigurationList = C01384C21CD13790000944EA /* Build configuration list for PBXProject "Tipmate" */;
 			compatibilityVersion = "Xcode 3.2";
 			developmentRegion = English;
 			hasScannedForEncodings = 0;
@@ -118,7 +118,7 @@
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				C01384C61CD13790000944EA /* tips */,
+				C01384C61CD13790000944EA /* Tipmate */,
 			);
 		};
 /* End PBXProject section */
@@ -260,7 +260,7 @@
 				INFOPLIST_FILE = tips/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.example.tips;
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				PRODUCT_NAME = Tipmate;
 			};
 			name = Debug;
 		};
@@ -271,14 +271,14 @@
 				INFOPLIST_FILE = tips/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.example.tips;
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				PRODUCT_NAME = Tipmate;
 			};
 			name = Release;
 		};
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		C01384C21CD13790000944EA /* Build configuration list for PBXProject "tips" */ = {
+		C01384C21CD13790000944EA /* Build configuration list for PBXProject "Tipmate" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				C01384D71CD13790000944EA /* Debug */,
@@ -287,7 +287,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		C01384D91CD13790000944EA /* Build configuration list for PBXNativeTarget "tips" */ = {
+		C01384D91CD13790000944EA /* Build configuration list for PBXNativeTarget "Tipmate" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				C01384DA1CD13790000944EA /* Debug */,
