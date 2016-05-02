@@ -4,7 +4,7 @@
 
 Submitted by: **Constance Jiang**
 
-Time spent: **4** hours spent in total (including bonus work)
+Time spent: **5.5** hours spent in total (including bonus work)
 
 ## User Stories
 
@@ -16,7 +16,6 @@ The following **required** functionality is complete:
 The following **optional** features are implemented:
 * [x] UI animations
 * [x] Remembering the bill amount across app restarts (if <10mins)
-* [ ] Using locale-specific currency and currency thousands separators.
 * [x] Making sure the keyboard is always visible and the bill amount is always the first responder. This way the user doesn't have to tap anywhere to use this app. Just launch the app and start typing.
 
 The following **additional** features are implemented:
@@ -28,11 +27,22 @@ The following **additional** features are implemented:
 
 ## Video Walkthrough
 
-Here's a walkthrough of implemented user stories:
+#### Initial Story (without extra functionality)
 
-<img src='http://i.imgur.com/link/to/your/gif/file.gif' title='Video Walkthrough' width='' alt='Video Walkthrough' />
+![initial](https://cloud.githubusercontent.com/assets/7309222/14945076/4f55f57e-0fbd-11e6-8f8e-ba8eec4105c8.gif)
 
-GIF created with [LiceCap](http://www.cockos.com/licecap/).
+#### Final App (with extra functionality)
+- Inputting `20` in the `billTextField` auto-corrects to `20.00`
+- The total bill amount is shown as the amount each person must pay rather than the total bill
+- Opening and closing the keyboard animates the total bill amount labels up and down
+- Opening the app again displays the previously-inputted values
+
+![extra-functionality](https://cloud.githubusercontent.com/assets/7309222/14945077/4f56fdb6-0fbd-11e6-99b9-9e4f51569d8a.gif)
+
+#### After 10 minutes
+The values reset to 0 (bill amount) and 1 (party count).
+
+![after-10-min](https://cloud.githubusercontent.com/assets/7309222/14945126/b1028340-0fbe-11e6-973e-1d2b7fe0c9d9.gif)
 
 ## Challenges
 
